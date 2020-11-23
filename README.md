@@ -7,6 +7,13 @@
 ### Acquiring Data
 
 ### Processing the Data
+Before running the Python script, make sure that Python is installed, along with the ```pandas```, ```numpy```, ```scipy```, and ```requests``` libraries. The libraries can be installed with pip or any other package manager. Open the script in a text editor of your choice and edit line #63 with the path to your file, i.e. 
+```
+data = pd.read_csv('path/to/your/file', ...)
+```
+Also make sure to change line #131 if your proxy url is different.
+
+Once these changes are made, run the script. If you refresh DynamoDB, you should see the values changing every few seconds.
 
 ### DynamoDB Setup
 For our Python script to communicate with the web application, we have to make use a database. Our database of choice was DynamoDB, and we'll see that this greatly simplifies the setup required for our other components. Go to the [AWS Console](https://aws.amazon.com/console/). Once you sign in, find the DynamoDB service and click on it. From the console, you can create a table by specifying a table name and the primary key. The name of the table can be anything you desire, but the primary key should be ```type```. This essentially specifies that each item that is stored in the database must have an attribute called ```type```. In our case, the possible values of ```type``` are ```alpha```, ```beta```, and ```alphaAsymmetry```. For our purposes, we can use the default settings. 
@@ -55,8 +62,12 @@ Repeat the previous steps for our ```PUT``` method. The only changes are the act
 
 Note that ```PUT``` does not have an expected response and that along with providing the ```type``` parameter, a ```value``` parameter should also be sent as data. 
 
+Once both methods have been created, deploy the API. Once it is deployed, the information page will have an invoke URL. Copying that link and adding a ```/alpha```, ```/beta```, or ```/alphaAsymmetry```will give us the value corresponding to that resource in the table. 
+
 ### Proxy Setup
+Because our web app is running locally, we will need a proxy to bypass CORS, a mechanism that restricts requests between websites on different domains without propery verification. While this is not a good idea for real applications, it is sufficient for a prototype. Follow the tutorial [here](https://www.npmjs.com/package/local-cors-proxy) to set up the proxy. 
 
 ### Running the Web Application
+Running the React app requires Node, which can be downloaded [here](https://nodejs.org/en/download/). Once Node is installed, navigate to the directory containing the code for the app (package.json should be one of the files listed). Run the command ```npm install``` to install all the dependencies, then run ```npm start``` to run the app locally. Running the latter command should open up a tab in your default browser immediately, but if it does not, go to the url ```localhost:3000```. 
 
 ## Conclusion
