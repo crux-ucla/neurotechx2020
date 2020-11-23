@@ -6,11 +6,11 @@ The goal of this project was to detect and visualize changes in alpha and beta p
 Currently, our project utilizes EEG data that is pre-recorded from a Muse headset, due to the company stopping support for its SDK. In the future we hope to stream EEG data to visualize changes in alpha/beta brainwaves in real-time.
 
 ## Project Setup
+
+### Acquiring Data
 In order to have multiple people work on the project more easily, we decided to use an EEG dataset as our input for our BCI rather than streaming the data.
 
 Specifically, we used a 2 minute long recording from our 2016 Muse headset acquired from the Mind Monitor app. After turning on the Muse and opening the app, the Muse headset should automatically connect to your cellphone. The light on the Muse will stop blinking and become solid once connected. Any other Muse-related app cannot be open during this time or the connection to Mind Monitor will not work. During the first minute of the recording, the participant closed their eyes and relaxed, and we used this data as our baseline. During the second minute, the participant counted backwards from 2064 by 7s in their head. The participant did not speak out loud in order to prevent unnecessary jaw movement that would affect the EEG data. The data was saved as a .csv file with a 256 Hz sampling rate.
-
-### Acquiring Data
 
 ### Processing the Data
 Before running the Python script, make sure that Python is installed, along with the ```pandas```, ```numpy```, ```scipy```, and ```requests``` libraries. The libraries can be installed with pip or any other package manager. Open the script in a text editor of your choice and edit line #63 with the path to your file, i.e. 
