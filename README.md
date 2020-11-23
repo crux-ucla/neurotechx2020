@@ -5,6 +5,9 @@
 ## Project Setup
 
 ### Acquiring Data
+In order to have multiple people work on the project more easily, we decided to use an EEG dataset as our input for our BCI rather than streaming the data.
+ 
+Specifically, we used a 2 minute long recording from our 2016 Muse headset acquired from the Mind Monitor app. After turning on the Muse and opening the app, the Muse headset should automatically connect to your cellphone. The light on the Muse will stop blinking and become solid once connected. Any other Muse-related app cannot be open during this time or the connection to Mind Monitor will not work. During the first minute of the recording, the participant closed their eyes and relaxed, and we used this data as our baseline. During the second minute, the participant counted backwards from 2064 by 7s in their head. The participant did not speak out loud in order to prevent unnecessary jaw movement that would affect the EEG data. The data was saved as a .csv file with a 256 Hz sampling rate.
 
 ### Processing the Data
 Before running the Python script, make sure that Python is installed, along with the ```pandas```, ```numpy```, ```scipy```, and ```requests``` libraries. The libraries can be installed with pip or any other package manager. Open the script in a text editor of your choice and edit line #63 with the path to your file, i.e. 
@@ -71,3 +74,6 @@ Because our web app is running locally, we will need a proxy to bypass CORS, a m
 Running the React app requires Node, which can be downloaded [here](https://nodejs.org/en/download/). Once Node is installed, navigate to the directory containing the code for the app (package.json should be one of the files listed). Run the command ```npm install``` to install all the dependencies, then run ```npm start``` to run the app locally. Running the latter command should open up a tab in your default browser immediately, but if it does not, go to the url ```localhost:3000```. 
 
 ## Conclusion
+Although we had to adapt due to the far-reaching impacts of the COVID-19 pandemic, we developed a system that can detect and visualize changes in alpha and beta powers as well as alpha asymmetry values from raw EEG data. For the future, we aim to add detection of eye blinks or jaw clenches to our system so that they can be removed from the signal. We also aim to find and remove streamed EEG values that are too noisy due to momentary movement or loss of contact between the electrode and participant. In addition, we could explore other signal processing methods such as wavelet transformations.
+
+In the future, we could develop a more formal feedback system based on this project. As mentioned earlier, alpha asymmetry values can be indicative of negative thinking. We could provide participants with a variety of visual feedback that corresponds to their asymmetry values to help them train their brain toward more left-sided brain activity. Testing this with many participants over multiple sessions and seeing how asymmetry values change would be a really cool experiment!
