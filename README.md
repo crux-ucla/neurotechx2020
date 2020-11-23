@@ -1,7 +1,7 @@
 # NeurotechX 2020 Student Clubs Competition Submission
 
 ## Project Overview
-The goal of this project was to detect and visualize changes in alpha and beta powers so that people using it can understand how their brains repsond to different tasks. In our prototype, the colored indicator on our website changes color based on changes in the alpha and beta relative values. Alpha waves are indicative of a resting state, while beta waves are indicative of an alert state. 
+The goal of this project was to detect and visualize changes in alpha and beta powers so that people using it can understand how their brains respond to different tasks. In our prototype, the colored indicator on our website changes color based on changes in the alpha and beta relative values. Alpha waves are indicative of a resting state, while beta waves are indicative of an alert state. 
 
 Currently, our project utilizes EEG data that is pre-recorded from a Muse headset, due to the company stopping support for its SDK. In the future we hope to stream EEG data to visualize changes in alpha/beta brainwaves in real-time.
 
